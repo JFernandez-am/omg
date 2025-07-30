@@ -3,8 +3,16 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.immutables/value/2.11.1/d48104508d61f4888534188478e24107b194d9fd/value-2.11.1.jar" />
+        </processorPath>
+        <module name="omg.test" />
+        <module name="omg.main" />
+      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17">
       <module name="objmatcher.main" target="1.8" />
       <module name="objmatcher.test" target="1.8" />
     </bytecodeTargetLevel>

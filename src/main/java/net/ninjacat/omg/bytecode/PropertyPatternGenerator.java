@@ -32,7 +32,10 @@ import java.util.regex.Pattern;
 
 import static io.vavr.API.*;
 import static io.vavr.Predicates.instanceOf;
+import static java.nio.file.Files.createDirectories;
+import static java.nio.file.Paths.get;
 import static net.ninjacat.omg.bytecode.CompareOrdering.PROPERTY_THEN_MATCHING;
+import static net.ninjacat.omg.bytecode.CompileDebugger.dumpClass;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
@@ -72,7 +75,10 @@ class PropertyPatternGenerator<T> {
         writer.visitEnd();
         return Try.of(() -> {
             final Class<?> patternClass = new CompiledClassLoader().defineClass(generateBinaryClassName(), writer.toByteArray());
-            CompileDebugger.dumpClass("/tmp/dump.class", writer.toByteArray());
+
+            createDirectories(get(System.getProperty("java.io.tmpdir"), "omg"));
+            dumpClass(get(System.getProperty("java.io.tmpdir"), "omg", "dump.class").toString(), writer.toByteArray());
+
             return instantiatePattern(patternClass);
         }).getOrElseThrow(this::wrapException);
     }
