@@ -40,14 +40,12 @@ jacocoTestReport {
     }
 }
 
-group 'com.github.loyalty'
-version '0.0.1'
+group 'com.github.jfernandez-am'
+version '0.1.19'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
-    withJavadocJar()
-    withSourcesJar()
 }
 
 repositories {
